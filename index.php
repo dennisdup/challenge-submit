@@ -37,7 +37,7 @@ class Loader{
     function getSubwayStops(){
 
         foreach($this->routes as $key=>$row):{
-            var_dump($this->parser->attributeChecker($row, "long_name"));
+            // var_dump($this->parser->attributeChecker($row, "long_name"));
             $stops = $this->getStops($this->parser->attribCheckerFirst($row, "id"));
             $stopslength = intval(sizeof($stops));                
             if($key == 0) {
@@ -49,8 +49,8 @@ class Loader{
             
         }endforeach;
         
-        var_dump($this->mostcount["long_name"]." ".$this->mostcount["count"] );
-        var_dump($this->leastcount["long_name"]." ".$this->leastcount["count"] );     
+        // var_dump($this->mostcount["long_name"]." ".$this->mostcount["count"] );
+        // var_dump($this->leastcount["long_name"]." ".$this->leastcount["count"] );     
         $this->createDictionary();
    }
    //update stops max/min
@@ -91,6 +91,7 @@ class Loader{
    //gets the connectiong stops for routes, filter dictionary and get stops with more than one route
    function getConnects(){
         $routesDictionary = $this->routesDictionary;   
+        // echo json_encode($routesDictionary);
         $connects = []; 
         foreach($routesDictionary as $stop=>$routes):{
             if(sizeof($routes) == 1 ) continue;
@@ -101,8 +102,8 @@ class Loader{
         $this->connectsDictionary = $connects;
    }
    //get route between two paths
-   function mapRoute(){
-        list($stop, $stop2) = explode(' ', readline('Enter stops, seperate with a space: ')); 
+   function mapRoute($stop =null, $stop2=null){
+        list($stop, $stop2) = explode(',', readline('Enter stops, seperate with a , example Ashmont, Milton :')); 
         $map = [];
         $set = (isset($stop) && $stop2) ? 1: 0;
         
@@ -133,8 +134,7 @@ class Loader{
 
         print_r("Connecting stops are: ");
         $print = $map? $map:"none";
-        print_r($print);
-       
+        print_r($print);       
    }
    //searched Connections library to see routes that share a stop
     private function searchConnections($searcharr){
@@ -157,6 +157,7 @@ $loader = new Loader();
 $loader->getSubwayRoutes();
 $loader->getSubwayStops();
 $loader->getConnects();
+// $loader->mapRoute("Central Avenue", "Ashmont");
 $loader->mapRoute();
 
 ?>
