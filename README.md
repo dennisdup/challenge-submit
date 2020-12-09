@@ -8,7 +8,7 @@ php 5.6>
 # To do
 Run composer, using phpunit for tests
 
-#run
+## run
 
 run from cli: php index.php
 
