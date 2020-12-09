@@ -37,7 +37,7 @@ class Loader{
     function getSubwayStops(){
 
         foreach($this->routes as $key=>$row):{
-            // var_dump($this->parser->attributeChecker($row, "long_name"));
+            var_dump($this->parser->attributeChecker($row, "long_name"));
             $stops = $this->getStops($this->parser->attribCheckerFirst($row, "id"));
             $stopslength = intval(sizeof($stops));                
             if($key == 0) {
@@ -49,8 +49,8 @@ class Loader{
             
         }endforeach;
         
-        // var_dump($this->mostcount["long_name"]." ".$this->mostcount["count"] );
-        // var_dump($this->leastcount["long_name"]." ".$this->leastcount["count"] );     
+        var_dump($this->mostcount["long_name"]." ".$this->mostcount["count"] );
+        var_dump($this->leastcount["long_name"]." ".$this->leastcount["count"] );     
         $this->createDictionary();
    }
    //update stops max/min
