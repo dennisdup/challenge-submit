@@ -103,7 +103,7 @@ class Loader{
    }
    //get route between two paths
    function mapRoute($stop =null, $stop2=null){
-        list($stop, $stop2) = explode(',', readline('Enter stops, seperate with a , example Ashmont, Milton :')); 
+        list($stop, $stop2) = explode(',', readline('Enter stops, seperate with a , example:Ashmont,Milton :')); 
         $map = [];
         $set = (isset($stop) && $stop2) ? 1: 0;
         
